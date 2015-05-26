@@ -1,0 +1,104 @@
+{
+  "run_list": [
+    "fail2ban",
+    "postgresql::libpq",
+    "postgresql::server",
+    "postgresql::client",
+    "nginx",
+    "sample_app"
+  ],
+  "rvm": {
+    "install_rubies": true,
+    "rubies": [ "2.1.0" ],
+    "default_ruby": "2.1.0",
+    "global_gems": [
+      {
+        "name": "bundler"
+      }
+    ]
+  },
+  "sample_app": {
+    "database": {
+      "name": "sample_app",
+      "user": "sample_app",
+      "password": "sample_app"
+    }
+  },
+  "postgresql": {
+    "version": "9.3",
+    "users": [
+      {
+        "username": "sample_app",
+        "password": "sample_app",
+        "superuser": true,
+        "createdb": false,
+        "login": true
+      }
+    ],
+    "databases": [
+      {
+        "name": "sample_app",
+        "owner": "sample_app",
+        "template": "template0",
+        "encoding": "UTF-8",
+        "locale": "en_US.UTF-8",
+        "extensions": [
+          "hstore",
+          "uuid-ossp"
+        ]
+      }
+    ],
+    "password": {
+      "sample_app": "sample_app"
+    },
+    "pg_hba": [
+      {
+        "type": "local",
+        "db": "all",
+        "user": "postgres",
+        "addr": "",
+        "method": "ident"
+      },
+      {
+        "type": "local",
+        "db": "all",
+        "user": "all",
+        "addr": "",
+        "method": "trust"
+      },
+      {
+        "type": "host",
+        "db": "all",
+        "user": "all",
+        "addr": "127.0.0.1/32",
+        "method": "trust"
+      },
+      {
+        "type": "host",
+        "db": "all",
+        "user": "all",
+        "addr": "::1/128",
+        "method": "trust"
+      },
+      {
+        "type": "host",
+        "db": "all",
+        "user": "postgres",
+        "addr": "127.0.0.1/32",
+        "method": "trust"
+      },
+      {
+        "type": "host",
+        "db": "all",
+        "user": "sample_app",
+        "addr": "127.0.0.1/32",
+        "method": "trust"
+      }
+    ]
+  },
+  "nginx": {
+    "version": "1.7.2",
+    "server_name": "test",
+    "default_site_enabled": false
+  }
+}

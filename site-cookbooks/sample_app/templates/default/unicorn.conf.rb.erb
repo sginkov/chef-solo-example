@@ -1,0 +1,26 @@
+worker_processes 8
+
+working_directory "<%= node[:sample_app][:deploy_to] %>/current"
+
+listen "<%= node[:sample_app][:unicorn][:sock] %>", :backlog => 64
+
+timeout 30
+
+pid "<%= node[:sample_app][:unicorn][:pid] %>"
+
+stderr_path "<%= node[:sample_app][:unicorn][:stderr] %>"
+stdout_path "<%= node[:sample_app][:unicorn][:stdout] %>"
+
+preload_app true
+
+check_client_connection false
+
+before_fork do |server, worker|
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+end
+
+after_fork do |server, worker|
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end

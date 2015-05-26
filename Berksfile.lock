@@ -1,0 +1,79 @@
+DEPENDENCIES
+  application_ruby
+  apt
+  build-essential
+  fail2ban
+  git
+  nginx
+  postgresql
+    git: git@github.com:phlipper/chef-postgresql.git
+    revision: df0423d11db9f4cf1c66ae6d94bcde86ab32f30a
+  runit (>= 1.1.2)
+  rvm
+  ssh_known_hosts
+  user
+
+GRAPH
+  apache2 (1.11.0)
+    freebsd (>= 0.0.0)
+    iptables (>= 0.0.0)
+    logrotate (>= 0.0.0)
+    pacman (>= 0.0.0)
+  application (4.1.6)
+  application_ruby (3.0.2)
+    apache2 (>= 0.0.0)
+    application (~> 4.0)
+    logrotate (~> 1.0)
+    passenger_apache2 (>= 0.0.0)
+    runit (~> 1.0)
+    unicorn (>= 0.0.0)
+  apt (2.7.0)
+  bluepill (2.3.1)
+    rsyslog (>= 0.0.0)
+  build-essential (2.2.3)
+  chef_gem (0.1.0)
+  chef_handler (1.1.8)
+  dmg (2.2.2)
+  fail2ban (2.2.1)
+    yum (~> 3.0)
+    yum-epel (>= 0.0.0)
+  freebsd (0.3.0)
+  git (4.2.2)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    windows (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  iptables (1.0.0)
+  java (1.31.0)
+  logrotate (1.9.1)
+  nginx (2.7.6)
+    apt (~> 2.2)
+    bluepill (~> 2.3)
+    build-essential (~> 2.0)
+    ohai (~> 2.0)
+    runit (~> 1.2)
+    yum-epel (~> 0.3)
+  ohai (2.0.1)
+  packagecloud (0.0.18)
+  pacman (1.1.1)
+  partial_search (1.0.8)
+  passenger_apache2 (2.2.3)
+    apache2 (~> 1.0)
+    build-essential (>= 0.0.0)
+  postgresql (0.16.1)
+    apt (>= 2.6.1)
+  rsyslog (2.0.0)
+  runit (1.6.0)
+    packagecloud (>= 0.0.0)
+  rvm (0.9.2)
+    chef_gem (>= 0.0.0)
+    java (>= 0.0.0)
+  ssh_known_hosts (2.0.0)
+    partial_search (>= 0.0.0)
+  unicorn (2.0.0)
+  user (0.4.2)
+  windows (1.37.0)
+    chef_handler (>= 0.0.0)
+  yum (3.6.0)
+  yum-epel (0.6.0)
+    yum (~> 3.0)

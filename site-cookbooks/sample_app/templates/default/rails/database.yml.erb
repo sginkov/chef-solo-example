@@ -1,0 +1,13 @@
+defaults: &defaults
+  adapter: postgresql
+  host: <%= node[:sample_app][:database][:host] %>
+  port: <%= node[:sample_app][:database][:port] %>
+  user: <%= node[:sample_app][:database][:user] %>
+  password: <%= node[:sample_app][:database][:password] %>
+  database: <%= node[:sample_app][:database][:name] %>
+  encoding: utf8
+  reconnect: true
+  prepared_statements: false
+
+production:
+  <<: *defaults

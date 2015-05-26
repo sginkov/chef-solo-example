@@ -1,0 +1,13 @@
+name             'sample_app'
+maintainer       's.ginkov'
+maintainer_email 's.ginkov@gmail.com'
+license          'All rights reserved'
+description      'Installs/Configures sample_app git@github.com:openshift/rails4-example.git'
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
+depends          'nginx'
+depends          'rvm'
+depends          'git'
+depends          'apt'
+depends          'ssh_known_hosts'
+depends          'postgresql'

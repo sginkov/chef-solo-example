@@ -1,0 +1,6 @@
+/cookbooks/
+/berks-cookbooks/
+*.DS_Store*
+/tmp/
+/.vagrant/*
+/knife.yml
